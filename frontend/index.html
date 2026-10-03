@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Crypto Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- header -->
+        <header class="header">
+            <div class="header-top">
+                <span class="badge-demo">DEMO MODE</span>
+                <span class="badge-security">READ-ONLY</span>
+            </div>
+            <div class="balance-container">
+                <h1 id="total-balance">$0.00</h1>
+                <div class="pnl-container">
+                    <span id="pnl-value" class="pnl-positive">+$0.00</span>
+                    <span id="pnl-percent" class="pnl-positive">(+0.0%)</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- main content area -->
+        <main id="main-content">
+            <!-- portfolio view -->
+            <div id="view-portfolio" class="view active">
+                <div class="chart-container">
+                    <svg id="portfolio-chart" viewBox="0 0 300 100" preserveAspectRatio="none">
+                        <!-- path will be injected by js -->
+                    </svg>
+                </div>
+                <div class="risk-block">
+                    <span class="risk-label">risk insight</span>
+                    <p id="risk-insight">loading...</p>
+                </div>
+                <h3 class="section-title">your assets</h3>
+                <div id="assets-list" class="assets-list">
+                    <!-- assets injected by js -->
+                </div>
+            </div>
+
+            <!-- assets view -->
+            <div id="view-assets" class="view">
+                <h3 class="section-title">all assets</h3>
+                <div id="all-assets-list" class="assets-list">
+                    <!-- full list injected by js -->
+                </div>
+            </div>
+
+            <!-- alerts view -->
+            <div id="view-alerts" class="view">
+                <div class="setting-card">
+                    <div class="setting-row">
+                        <span>enable alerts</span>
+                        <label class="switch">
+                            <input type="checkbox" id="alerts-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <p class="demo-note">demo only — no real notifications yet</p>
+                </div>
+                
+                <div class="setting-card">
+                    <label>portfolio change threshold (%)</label>
+                    <select id="portfolio-threshold">
+                        <option value="3">3%</option>
+                        <option value="5">5%</option>
+                        <option value="10">10%</option>
+                    </select>
+                </div>
+
+                <div class="setting-card">
+                    <label>BTC price alert ($)</label>
+                    <input type="number" id="btc-price-threshold" placeholder="e.g. 70000">
+                </div>
+            </div>
+
+            <!-- settings view -->
+            <div id="view-settings" class="view">
+                <div class="setting-card">
+                    <label>language</label>
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </div>
+                
+                <div class="security-block">
+                    <h4>security</h4>
+                    <p>we never request withdrawal permissions, seed phrases, private keys or passwords.</p>
+                    <span class="badge-demo">DEMO MODE</span>
+                </div>
+
+                <button id="delete-data-btn" class="btn-danger">delete local data</button>
+            </div>
+        </main>
+
+        <!-- bottom navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-target="view-portfolio">
+                <span>📊</span>
+                <span>portfolio</span>
+            </button>
+            <button class="nav-item" data-target="view-assets">
+                <span>💼</span>
+                <span>assets</span>
+            </button>
+            <button class="nav-item" data-target="view-alerts">
+                <span>🔔</span>
+                <span>alerts</span>
+            </button>
+            <button class="nav-item" data-target="view-settings">
+                <span>⚙️</span>
+                <span>settings</span>
+            </button>
+        </nav>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
